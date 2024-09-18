@@ -1,5 +1,15 @@
+import { DataProps } from "../controllers/CreateNutritionController";
+
 class CreateNutritionService {
-  async execute() {
+  async execute({
+    name,
+    age,
+    gender,
+    height,
+    level,
+    objective,
+    weight,
+  }: DataProps) {
     console.log("Teste");
 
     return { message: "FUNCIONOU O SERVICE" };
