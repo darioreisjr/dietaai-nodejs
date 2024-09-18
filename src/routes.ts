@@ -4,6 +4,7 @@ import {
   FastifyRequest,
   FastifyReply,
 } from "fastify";
+import { CreateNutritionController } from "./controllers/CreateNutritionController";
 
 export async function routes(
   fastify: FastifyInstance,
@@ -13,4 +14,11 @@ export async function routes(
     console.log("ROTA CHAMADA!!!!");
     reply.send({ OK: true });
   });
+
+  fastify.get(
+    "/create",
+    async (request: FastifyRequest, reply: FastifyReply) => {
+      return new CreateNutritionController().handle(request, reply);
+    }
+  );
 }
