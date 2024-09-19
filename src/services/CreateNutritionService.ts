@@ -25,7 +25,14 @@ class CreateNutritionService {
         const jsonText = response.response.candidates[0]?.content.parts[0]
           .text as string;
 
-        return { data: jsonText };
+        let jsonString = jsonText
+          .replace(/```\w*\n/g, "")
+          .replace(/\n```/g, "")
+          .trim();
+
+        let jsonObject = JSON.parse(jsonString);
+
+        return { data: jsonObject };
       }
     } catch (err) {
       console.log("Erro JSON: ", err);
